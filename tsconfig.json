@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "outDir": "./dist/",
+        "outDir": "./dist/assets/",
         "noImplicitAny": true,
         "module": "es6",
         "target": "es5",
