@@ -44,6 +44,7 @@ class Enemy implements Competitor {
 }
 
 // execution
+const robotName: string = window.prompt("What is your Robot's name?");
 const enemy = new Enemy({name:'Roborto', health: 75, attack: 12});
-const player = new Player({name:'Sydney', health: 75, attack: 12, money: 100});
+const player = new Player({name: robotName, health: 75, attack: 12, money: 100});
 console.log(player)
