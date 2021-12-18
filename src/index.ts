@@ -55,9 +55,20 @@ const fight = () => {
         const confirmSkip = window.confirm("Are you sure you'd like to quit?");
         if(confirmSkip) {
             player.money = player.money -10;
-            window.alert(`${player.name} pays 10 to skip this fight. You have ${player.money} remaining.`);
+            window.alert(`${player.name} pays 10 to skip this fight. You have ${player.money} money remaining.`);
             return;
         }
+    }
+
+    enemy.health = enemy.health - player.attack;
+    window.alert(`${player.name} attacked ${enemy.name}.`)
+
+    if(enemy.health <= 0) {
+        window.alert(`${enemy.name} has died! ${player.name} has been awarded 20 money.`);
+        player.money = player.money + 20;
+        return;
+    } else {
+        window.alert(`${enemy.name} still has ${enemy.health} health left.`);
     }
 };
 
