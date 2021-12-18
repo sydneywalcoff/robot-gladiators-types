@@ -45,6 +45,20 @@ class Enemy implements Competitor {
 
 // execution
 const robotName: string = window.prompt("What is your Robot's name?");
-const enemy = new Enemy({name:'Roborto', health: 75, attack: 12});
-const player = new Player({name: robotName, health: 75, attack: 12, money: 100});
-console.log(player)
+const player = new Player({ name: robotName, health: 100, attack: 10, money: 10 });
+
+const enemy = new Enemy({ name: 'Roborto', health: 50, attack: 12 });
+
+const fight = () => {
+    const promptFight = window.prompt('Would you like to FIGHT or SKIP this battle? Enter "FIGHT" or "SKIP" to choose');
+    if(promptFight.toUpperCase() === 'SKIP') {
+        const confirmSkip = window.confirm("Are you sure you'd like to quit?");
+        if(confirmSkip) {
+            player.money = player.money -10;
+            window.alert(`${player.name} pays 10 to skip this fight. You have ${player.money} remaining.`);
+            return;
+        }
+    }
+};
+
+fight();
