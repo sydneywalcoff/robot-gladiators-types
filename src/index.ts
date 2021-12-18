@@ -138,4 +138,19 @@ const startGame = () => {
     }
 };
 
+const endGame = () => {
+    if(player.health > 0) {
+        window.alert("Great job, you've survived the game! You now have a score of " + player.money + ".")
+    } else {
+        window.alert("You've lost your robot in battle");
+    }
+
+    const playAgainConfirm: boolean = window.confirm("Would you like to play again?");
+    if(playAgainConfirm) {
+        startGame();
+    } else {
+        window.alert("Thank you for playing Robot Gladiators! Come back soon!");
+    }
+};
+
 startGame();
