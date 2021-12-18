@@ -89,8 +89,6 @@ const fight = (enemy: EnemyProps) => {
 
 const startGame = () => {
     player.reset();
-    console.log(player)
-    
 
 };
 
