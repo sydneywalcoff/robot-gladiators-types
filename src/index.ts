@@ -60,24 +60,26 @@ const fight = () => {
         }
     }
 
-    enemy.health = enemy.health - player.attack;
-    window.alert(`${player.name} attacked ${enemy.name}.`)
-
-    if(enemy.health <= 0) {
-        window.alert(`${enemy.name} has died! ${player.name} has been awarded 20 money.`);
-        player.money = player.money + 20;
-        return;
-    } else {
-        window.alert(`${enemy.name} still has ${enemy.health} health left.`);
-    }
-
-    player.health = player.health - enemy.attack;
-    window.alert(`${enemy.name} attacked ${player.name}.`)
-    if(player.health <= 0) {
-        window.alert(`${player.name} has died!`);
-        return;
-    } else {
-        window.alert(`${player.name} still has ${player.health} health remaining.`)
+    while(player.health > 0 && enemy.health >0) {
+        enemy.health = enemy.health - player.attack;
+        window.alert(`${player.name} attacked ${enemy.name}.`)
+    
+        if(enemy.health <= 0) {
+            window.alert(`${enemy.name} has died! ${player.name} has been awarded 20 money.`);
+            player.money = player.money + 20;
+            return;
+        } else {
+            window.alert(`${enemy.name} still has ${enemy.health} health left.`);
+        }
+    
+        player.health = player.health - enemy.attack;
+        window.alert(`${enemy.name} attacked ${player.name}.`)
+        if(player.health <= 0) {
+            window.alert(`${player.name} has died!`);
+            return;
+        } else {
+            window.alert(`${player.name} still has ${player.health} health remaining.`)
+        }
     }
 };
 
