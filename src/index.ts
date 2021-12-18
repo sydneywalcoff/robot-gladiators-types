@@ -89,7 +89,14 @@ const fight = (enemy: EnemyProps) => {
 
 const startGame = () => {
     player.reset();
-
+    for(let i=0; i < enemyNames.length; i++) {
+        if(player.health > 0) {
+            window.alert("!elcome to Robot Gladiators! Round " + (i+1) + '!');
+            const pickedEnemyName = enemyNames[i];
+            const enemy = new Enemy({ name: pickedEnemyName, health: 50, attack: 12 });
+            fight(enemy);
+        }
+    }
 };
 
 startGame();
