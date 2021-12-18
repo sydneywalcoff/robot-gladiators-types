@@ -70,6 +70,15 @@ const fight = () => {
     } else {
         window.alert(`${enemy.name} still has ${enemy.health} health left.`);
     }
+
+    player.health = player.health - enemy.attack;
+    window.alert(`${enemy.name} attacked ${player.name}.`)
+    if(player.health <= 0) {
+        window.alert(`${player.name} has died!`);
+        return;
+    } else {
+        window.alert(`${player.name} still has ${player.health} health remaining.`)
+    }
 };
 
 fight();
