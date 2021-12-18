@@ -29,6 +29,11 @@ class Player implements Competitor {
         this.health = props.health;
         this.attack = props.attack;
         this.money = props.money;
+    };
+    reset() {
+        this.health = 100;
+        this.attack = 10;
+        this.money = 10;
     }
 }
 
@@ -45,11 +50,10 @@ class Enemy implements Competitor {
 
 // execution
 const robotName: string = window.prompt("What is your Robot's name?");
-const player = new Player({ name: robotName, health: 100, attack: 10, money: 10 });
+let player = new Player({ name: robotName, health: 100, attack: 10, money: 10 });
+const enemyNames = ['Roborto', 'Amy Android', 'Robo Trumble'];
 
-const enemy = new Enemy({ name: 'Roborto', health: 50, attack: 12 });
-
-const fight = () => {
+const fight = (enemy: EnemyProps) => {
     const promptFight = window.prompt('Would you like to FIGHT or SKIP this battle? Enter "FIGHT" or "SKIP" to choose');
     if(promptFight.toUpperCase() === 'SKIP') {
         const confirmSkip = window.confirm("Are you sure you'd like to quit?");
@@ -83,4 +87,11 @@ const fight = () => {
     }
 };
 
-fight();
+const startGame = () => {
+    player.reset();
+    console.log(player)
+    
+
+};
+
+startGame();
