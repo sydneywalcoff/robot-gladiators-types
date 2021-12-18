@@ -59,7 +59,7 @@ const fight = (enemy: EnemyProps) => {
         const confirmSkip = window.confirm("Are you sure you'd like to quit?");
         if(confirmSkip) {
             player.money = player.money -10;
-            window.alert(`${player.name} pays 10 to skip this fight. You have ${player.money} money remaining.`);
+            window.alert(`${player.name} pays 10 coins to skip this fight. You have ${player.money} coins remaining.`);
             return;
         }
     }
@@ -69,7 +69,7 @@ const fight = (enemy: EnemyProps) => {
         window.alert(`${player.name} attacked ${enemy.name}.`)
     
         if(enemy.health <= 0) {
-            window.alert(`${enemy.name} has died! ${player.name} has been awarded 20 money.`);
+            window.alert(`${enemy.name} has died! ${player.name} has been awarded 20 coins.`);
             player.money = player.money + 20;
             return;
         } else {
@@ -87,6 +87,39 @@ const fight = (enemy: EnemyProps) => {
     }
 };
 
+const shop = () => {
+    const shopPrompt: string = window.prompt("You have "+ player.money +" coins. Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one: 'REFILL', 'UPGRADE', OR 'LEAVE' to make a choice.");
+
+    switch(shopPrompt.toUpperCase()) {
+        case 'REFILL':
+            if(player.money >= 7) {
+                window.alert(`Refilling ${player.name}'s health by 20 for 7 coins.`);
+
+                player.health = player.health + 20;
+                player.money = player.money - 7;
+            } else {
+                window.alert("You don't have enough coins!");
+            }
+            break;
+        case 'UPGRADE':
+            if(player.money >= 7) {
+                window.alert(`Upgrading ${player.name}'s attack by 6 for 7 coins.`);
+                player.attack = player.attack + 6;
+                player.money = player.money - 7;
+            } else {
+                window.alert("You don't have enough coins!");
+            }
+            break;
+        case 'LEAVE':
+            window.alert('Leaving the store.')
+            break;
+        default:
+            window.alert("You did not pick a valid option. Try again.")
+            shop();
+            break; 
+    }
+};
+
 const startGame = () => {
     player.reset();
     for(let i=0; i < enemyNames.length; i++) {
@@ -98,7 +131,7 @@ const startGame = () => {
             if(player.health > 0 && i < enemyNames.length -1) {
                 const storeConfirm: boolean = window.confirm("The fight is over. Visit the store before the next round?");
                 if(storeConfirm) {
-                    console.log('go to shop')
+                    shop();
                 }
             }
         }
