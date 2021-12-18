@@ -91,10 +91,16 @@ const startGame = () => {
     player.reset();
     for(let i=0; i < enemyNames.length; i++) {
         if(player.health > 0) {
-            window.alert("!elcome to Robot Gladiators! Round " + (i+1) + '!');
+            window.alert("Welcome to Robot Gladiators! Round " + (i+1) + '!');
             const pickedEnemyName = enemyNames[i];
             const enemy = new Enemy({ name: pickedEnemyName, health: 50, attack: 12 });
             fight(enemy);
+            if(player.health > 0 && i < enemyNames.length -1) {
+                const storeConfirm = window.confirm("The fight is over. Visit the store before the next round?");
+                if(storeConfirm) {
+                    console.log('go to shop')
+                }
+            }
         }
     }
 };
